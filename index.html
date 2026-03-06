@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Triage Pro - Velocidad Variable</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="top-bar">
+        <button id="btn-nuevo" onclick="generarCasoAleatorio()">
+            <span>➕</span> Nuevo Paciente
+        </button>
+
+        <div class="speed-control">
+            <label for="ms-input">Atención (ms):</label>
+            <input type="number" id="ms-input" value="5000" min="10" step="100">
+        </div>
+
+        <div id="next-patient-preview">Esperando...</div>
+    </header>
+    <div class="main-wrapper">
+        <div class="flex-layout">
+
+            <div class="simulator-side">
+                <section class="recepcion-box">
+                    <div id="item-actual">RECEPCIÓN LIBRE</div>
+                    <div class="progress-container">
+                        <div id="progress-bar"></div>
+                    </div>
+                </section>
+                <section id="fila-container"></section>
+            </div>
+
+            <aside class="logic-panel">
+                <h3>📖 Protocolo de Lógica</h3>
+                <p>El sistema organiza la atención basándose en dos reglas fundamentales:</p>
+
+                <div class="rule-card">
+                    <span class="rule-num">1</span>
+                    <div>
+                        <strong>Prioridad por Niveles</strong>
+                        <p>Los pacientes con mayor riesgo (Score alto) siempre irán al principio de la fila general.</p>
+                    </div>
+                </div>
+
+                <div class="rule-card">
+                    <span class="rule-num">2</span>
+                    <div>
+                        <strong>Orden de Llegada (FIFO)</strong>
+                        <p>Dentro de un mismo nivel de color, se respeta estrictamente quién llegó primero.</p>
+                    </div>
+                </div>
+
+
+            </aside>
+
+        </div>
+    </div>
+
+
+    <script src="app.js"></script>
+</body>
+
+</html>
