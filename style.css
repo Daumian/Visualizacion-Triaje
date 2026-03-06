@@ -1,0 +1,246 @@
+:root {
+    --dark: #2c3e50;
+    --green: #2ecc71;
+    --bg: #f0f2f5;
+    --ancho-total: 850px; /* Aquí controlas el ancho de la caja */
+}
+
+body { 
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: var(--bg);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+}
+
+.top-bar { 
+    display: flex; 
+    align-items: center; 
+    gap: 25px; 
+    margin-bottom: 40px; 
+    padding: 20px 40px; 
+    background: white; 
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    width: fit-content;
+}
+
+button { 
+    padding: 15px 30px; 
+    cursor: pointer; 
+    background-color: var(--dark);
+    color: white; 
+    border: none; 
+    border-radius: 10px; 
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+#next-patient-preview { 
+    padding: 12px 30px; 
+    border-radius: 10px; 
+    font-weight: bold; 
+    color: #7f8c8d; 
+    min-width: 180px; 
+    text-align: center;
+    border: 2px dashed #bdc3c7;
+    font-size: 1.1rem;
+}
+
+/* Contenedor que agrupa Recepción y Fila */
+.main-wrapper {
+    width: 100%;
+    max-width: var(--ancho-total);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recepcion-box {
+    width: 100%;
+    min-height: 140px; /* Un poco más alta para que luzca */
+    background-color: var(--dark);
+    color: white; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 20px 20px 0 0;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+#item-actual {
+    font-size: 1.5rem; /* Letras más grandes para la caja ancha */
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.progress-container {
+    width: 90%;
+    height: 8px; /* Línea un poco más gruesa */
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+#progress-bar {
+    width: 0%;
+    height: 100%;
+    background-color: var(--green);
+    box-shadow: 0 0 15px var(--green);
+    transition: width 0s linear;
+}
+
+#fila-container {
+    width: 100%;
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    padding: 25px 0;
+    border-left: 4px solid var(--dark);
+    border-right: 4px solid var(--dark);
+    border-bottom: 4px solid transparent; /* El piso sigue siendo invisible */
+    background: transparent;
+    min-height: 300px;
+}
+
+.paciente-fila {
+    width: 92%; /* Ocupa casi todo el ancho de la caja */
+    height: 55px;
+    margin: 10px 0;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    animation: dropIn 0.5s ease-out;
+}
+
+@keyframes dropIn {
+    from { transform: translateY(-50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* ... (mantener todo lo anterior y agregar esto) ... */
+
+.speed-control {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f8f9fa;
+    padding: 5px 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.speed-control label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+.speed-control input {
+    width: 80px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-weight: bold;
+    color: var(--dark);
+    outline: none;
+}
+
+.speed-control input:focus {
+    border-color: var(--green);
+}
+
+/* Asegurar que la top-bar no se amontone */
+.top-bar {
+    flex-wrap: wrap; 
+    justify-content: center;
+}
+
+/* Layout para poner uno al lado del otro */
+.flex-layout {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.simulator-side {
+    flex: 2; /* Ocupa más espacio */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Panel de Lógica */
+.logic-panel {
+    flex: 1; /* Ocupa menos espacio */
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    border-top: 5px solid var(--dark);
+    position: sticky;
+    top: 120px; /* Para que te siga al hacer scroll */
+}
+
+.logic-panel h3 {
+    margin-top: 0;
+    color: var(--dark);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 10px;
+}
+
+.rule-card {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.rule-num {
+    background: var(--dark);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.rule-card strong {
+    display: block;
+    color: #333;
+    margin-bottom: 3px;
+}
+
+.rule-card p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.3;
+}
+
+.info-note {
+    margin-top: 25px;
+    padding: 10px;
+    background: #e8f4fd;
+    border-left: 4px solid #3498db;
+    color: #2980b9;
+    border-radius: 4px;
+}
